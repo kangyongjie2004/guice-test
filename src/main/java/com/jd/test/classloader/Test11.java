@@ -8,8 +8,8 @@
 // * @author kangyongjie E-mail: kangyongjie@jd.com
 // * @version Created ：2018/7/24 17:48
 // */
-//public class Test122 {
-//    public void print(){
-//        System.out.println("hello,world!");
+//public class Test1 {
+//    public void print(Test test){
+//        System.out.println("hello,world!"+Test.name);
 //    }
 //}

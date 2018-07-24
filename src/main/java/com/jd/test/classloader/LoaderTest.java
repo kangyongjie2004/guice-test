@@ -1,6 +1,7 @@
 package com.jd.test.classloader;
 
 import java.io.File;
+import java.lang.reflect.Method;
 import java.net.URI;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -22,7 +23,7 @@ public class LoaderTest {
         URL[] urls={uri.toURL()};
 
         ClazzLoader cl1 = new ClazzLoader(urls, ClassLoader.getSystemClassLoader());//ClassLoader.getSystemClassLoader()
-        Class c1 = cl1.loadClass("com.jd.test.classloader.Test1");
+        Class c1 = cl1.loadClass("com.jd.test.classloader.Test");
         System.out.println(c1.getClassLoader());
 
         String rootDir1="D:\\test_dir\\guice-test-1.0-SNAPSHOT1.jar";
@@ -32,6 +33,11 @@ public class LoaderTest {
         ClazzLoader cl2 = new ClazzLoader(urls1, ClassLoader.getSystemClassLoader());
         Class c2 = cl2.loadClass("com.jd.test.classloader.Test1");
         System.out.println(c2.getClassLoader());
+
+        Method method = c2.getMethod("print",Test.class);
+        method.invoke(c2.newInstance(),Test.class.newInstance())
+
+        ;
 
     }
 
