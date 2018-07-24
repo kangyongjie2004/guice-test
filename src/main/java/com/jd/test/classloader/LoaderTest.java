@@ -32,10 +32,15 @@ public class LoaderTest {
         URL[] urls1={uri1.toURL()};
         ClazzLoader cl2 = new ClazzLoader(urls1, ClassLoader.getSystemClassLoader());
         Class c2 = cl2.loadClass("com.jd.test.classloader.Test1");
+        Class c3 = cl2.loadClass("com.jd.test.classloader.Test");
         System.out.println(c2.getClassLoader());
 
-        Method method = c2.getMethod("print",Test.class);
-        method.invoke(c2.newInstance(),Test.class.newInstance())
+        Class parmeterClass = c3;
+
+//        Method method = c2.getMethod("print",Test.class);
+//        method.invoke(c2.newInstance(),Test.class.newInstance()) ;
+        Method method = c2.getMethod("print",parmeterClass);
+        method.invoke(c2.newInstance(),parmeterClass.newInstance())
 
         ;
 
