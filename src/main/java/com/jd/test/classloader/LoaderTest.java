@@ -21,7 +21,6 @@ public class LoaderTest {
         File file = new File(rootDir);
         URI uri=file.toURI();
         URL[] urls={uri.toURL()};
-
         ClazzLoader cl1 = new ClazzLoader(urls, ClassLoader.getSystemClassLoader());//ClassLoader.getSystemClassLoader()
         Class c1 = cl1.loadClass("com.jd.test.classloader.Test");
         System.out.println(c1.getClassLoader());
@@ -34,15 +33,16 @@ public class LoaderTest {
         Class c2 = cl2.loadClass("com.jd.test.classloader.Test1");
         Class c3 = cl2.loadClass("com.jd.test.classloader.Test");
         System.out.println(c2.getClassLoader());
+        System.out.println(c3.getClassLoader());
 
-        Class parmeterClass = c3;
+        Class parmeterClass = c1;
+
+        System.out.println("+++++++++"+(c1==c3));
 
 //        Method method = c2.getMethod("print",Test.class);
 //        method.invoke(c2.newInstance(),Test.class.newInstance()) ;
-        Method method = c2.getMethod("print",parmeterClass);
-        method.invoke(c2.newInstance(),parmeterClass.newInstance())
-
-        ;
+        Method method = c2.getMethod("print",ITest.class);
+        method.invoke(c2.newInstance(),parmeterClass.newInstance());
 
     }
 

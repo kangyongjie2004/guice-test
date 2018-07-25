@@ -8,9 +8,6 @@ package com.jd.test.classloader;
  * @author kangyongjie E-mail: kangyongjie@jd.com
  * @version Created ：2018/7/24 16:52
  */
-public class Test {
-    public static String name = "--- kyj";
-    public static void main(String[] args) {
-        System.out.println(ClassLoader.getSystemClassLoader());
-    }
+public interface ITest {
+    public String getName();
 }
